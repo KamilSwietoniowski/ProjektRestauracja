@@ -1,0 +1,74 @@
+﻿@model IEnumerable<ProjektRestauracja.Models.TabZamówienia>
+
+@{
+    ViewBag.Title = "Restauracja Projekt";
+}
+
+<h2>Lista Zamówień</h2>
+@if (TempData["InfoMessage"] != null)
+{
+    <div class="alert alert-info">
+        <strong>Informacja: </strong> @TempData["InfoMessage"]
+        <button type="button" class=" close" data-dismiss="alert" aria-label="Close"><span>&times;</span></button>
+    </div>
+
+}
+else if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success">
+        <strong>Operacja zakończona: </strong> @TempData["SuccessMessage"]
+        <button type="button" class=" close" data-dismiss="alert" aria-label="Close"><span>&times;</span></button>
+    </div>
+
+}
+else if (TempData["ErrorMessage"] != null)
+{
+    <div class="alert alert-danger">
+        <strong>Wystąpił błąd: </strong> @TempData["ErrorMessage"]
+        <button type="button" class=" close" data-dismiss="alert" aria-label="Close"><span>&times;</span></button>
+    </div>
+
+}
+<p>
+    @Html.ActionLink("Dodaj Nowe Zamówienie", "Create", null, new { @class = "btn btn-primary" })
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ID_Potrawy)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ID_Pracownika)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Status_Zamówienia)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Numer_Stolika)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ID_Potrawy)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ID_Pracownika)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status_Zamówienia)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Numer_Stolika)
+            </td>
+            <td>
+                @Html.ActionLink("Edytuj", "Edit", new { id = item.ID_Zamówienia }, new { @class = "btn btn-primary" }) &nbsp;&nbsp;&nbsp;     
+                @Html.ActionLink("Usuń", "Delete", new { id = item.ID_Zamówienia }, new { @class = "btn btn-danger" }) &nbsp;&nbsp;&nbsp;
+            </td>
+        </tr>
+    }
+
+</table>

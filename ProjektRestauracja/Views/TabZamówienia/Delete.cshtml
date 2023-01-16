@@ -1,0 +1,64 @@
+﻿@model ProjektRestauracja.Models.TabZamówienia
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+@if (TempData["ErrorMessage"] != null)
+{
+    <div class="alert alert-danger">
+        <strong>Wystąpił błąd: </strong> @TempData["ErrorMessage"]
+        <button type="button" class=" close" data-dismiss="alert" aria-label="Close"><span>&times;</span></button>
+    </div>
+
+}
+<h3>Czy chcesz aby usunąć element?</h3>
+<div>
+    <h4>TabZamówienia</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ID_Potrawy)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ID_Potrawy)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ID_Pracownika)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ID_Pracownika)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Status_Zamówienia)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Status_Zamówienia)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Numer_Stolika)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Numer_Stolika)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-danger" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

@@ -1,0 +1,88 @@
+﻿@model ProjektRestauracja.Models.Pracownicy
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+@if (TempData["ErrorMessage"] != null)
+{
+    <div class="alert alert-danger">
+        <strong>Wystąpił błąd: </strong> @TempData["ErrorMessage"]
+        <button type="button" class=" close" data-dismiss="alert" aria-label="Close"><span>&times;</span></button>
+    </div>
+
+}
+
+<h3>Czy na pewno chcesz usunąć ten element?</h3>
+<div>
+    <h4>Pracownicy</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ID_Pracownika)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ID_Pracownika)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Imię)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Imię)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Nazwisko)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nazwisko)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Stanowisko)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Stanowisko)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Data_Zatrudnienia)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Data_Zatrudnienia)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Pensja)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Pensja)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Płeć)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Płeć)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-danger" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

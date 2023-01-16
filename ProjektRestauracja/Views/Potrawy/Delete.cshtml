@@ -1,0 +1,56 @@
+﻿@model ProjektRestauracja.Models.Potrawy
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+@if (TempData["ErrorMessage"] != null)
+{
+    <div class="alert alert-danger">
+        <strong>Błąd! </strong> @TempData["ErrorMessage"]
+        <button type="button" class=" close" data-dismiss="alert" aria-label="Close"><span>&times;</span></button>
+    </div>
+
+}
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Potrawy</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Nazwa_Potrawy)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nazwa_Potrawy)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Cena)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cena)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Typ_Potrawy)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Typ_Potrawy)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-danger" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

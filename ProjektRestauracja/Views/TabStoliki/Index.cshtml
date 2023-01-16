@@ -1,0 +1,65 @@
+﻿@model IEnumerable<ProjektRestauracja.DBC.TabStoliki>
+
+@{
+    ViewBag.Title = "Restauracja Projek";
+}
+
+<h2>Lista Stolików</h2>
+@if (TempData["InfoMessage"] != null)
+{
+    <div class="alert alert-info">
+        <strong>Informacja: </strong> @TempData["InfoMessage"]
+        <button type="button" class=" close" data-dismiss="alert" aria-label="Close"><span>&times;</span></button>
+    </div>
+
+}
+else if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success">
+        <strong>Operacja zakończona: </strong> @TempData["SuccessMessage"]
+        <button type="button" class=" close" data-dismiss="alert" aria-label="Close"><span>&times;</span></button>
+    </div>
+
+}
+else if (TempData["ErrorMessage"] != null)
+{
+    <div class="alert alert-danger">
+        <strong>Wystąpił błąd: </strong> @TempData["ErrorMessage"]
+        <button type="button" class=" close" data-dismiss="alert" aria-label="Close"><span>&times;</span></button>
+    </div>
+
+}
+
+<p>
+    @Html.ActionLink("Dodaj nowy stolik", "Create", null, new { @class = "btn btn-primary" })
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Numer_stolika)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Ilość_miejsc)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.Numer_stolika)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Ilość_miejsc)
+    </td>
+    <td>
+    <td>
+        @Html.ActionLink("Edytuj", "Edit", new { id = item.Numer_stolika }, new { @class = "btn btn-primary" }) &nbsp;&nbsp;&nbsp;
+        @Html.ActionLink("Usuń", "Delete", new { id = item.Numer_stolika }, new { @class = "btn btn-danger" })&nbsp;&nbsp;&nbsp;
+    </td>
+    </td>
+</tr>
+    }
+
+</table>
